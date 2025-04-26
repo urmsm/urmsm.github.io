@@ -1,0 +1,57 @@
+baseURL: https://www.mrsum.top/
+languageCode: zh-cn
+title: MrSuM
+theme: hugo-PaperMod
+
+params:
+  profileMode:
+    enabled: true
+    # title: "\\(MrSuM\\)"
+    title: "ℳ𝓇𝒮𝓊ℳ"
+    subtitle:
+      - "求知若渴 虚心若愚"
+      - "欢迎来到我的个人网站"
+      - "有朋自远方来 不亦乐乎"
+      - "嘿！别来无恙啊！"
+
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/urmsm"
+    - name: "gitee"
+      url: "https://gitee.com/urmsm"
+    - name: "email"
+      url: "mailto:mrsumx@163.com"
+
+  math: true
+
+menu:
+  main:
+    [
+      { name: "Home", url: "/", weight: 1 },
+      { name: "Services", url: "/services", weight: 2 },
+      # { name: "Categories", url: "/categories", weight: 3 },
+      # { name: "Tags", url: "/tags", weight: 4 },
+    ]
+
+disableKinds:
+  - taxonomy
+  - term
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+          - - $
+            - $
+        enable: true
+    renderer:
+      unsafe: true

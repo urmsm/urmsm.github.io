@@ -1,0 +1,19 @@
+<!-- AnimeJS -->
+<!-- <script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<!-- MAthJax -->
+{{ if .Param "math" }}
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+    MathJax = {
+        tex: {
+            displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
+            inlineMath: [['\\(', '\\)'], ['$', '$']]  // inline
+        },
+        loader: {
+            load: ['ui/safe']
+        },
+    };
+</script>
+{{ end }}

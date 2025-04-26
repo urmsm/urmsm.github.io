@@ -1,0 +1,15 @@
+.social-icons a {
+    transform: color 1.3s ease-in-out;
+}
+
+.social-icons a svg {
+    transform: color 1.3s ease-in-out;
+}
+
+.social-icons a:hover svg {
+    color: #aaa;
+}
+
+.subtitle-anime-inout-hide {
+    display: none;
+}

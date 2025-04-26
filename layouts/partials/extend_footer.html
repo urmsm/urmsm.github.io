@@ -1,0 +1,49 @@
+<!-- 为副标题增加动效 -->
+<!-- <script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script>
+    var subtitles = [];
+    var index = 0;
+
+    document.querySelectorAll('.subtitle-anime-inout').forEach((subtitle, i) => {
+        // 为每个 subtitle 添加唯一的类名
+        subtitle.classList.add('subtitle-' + i);
+        // subtitle.classList.add('subtitle-anime-inout-hide');
+        subtitle.innerHTML = subtitle.textContent.replace(/\S/g, "<span class='subtitle-letter-" + i + "'>$&</span>");
+
+        const tl = anime.timeline({ loop: false })
+            .add({
+                targets: '.subtitle-' + i + ' .subtitle-letter-' + i,
+                opacity: [0, 1],
+                easing: "easeInOutQuad",
+                duration: 3250,
+                delay: (el, i) => 150 * i,
+            })
+            .add({
+                targets: '.subtitle-' + i,
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000,
+                complete: function (anim) {
+                    // 隐藏当前 subtitle
+                    subtitle.classList.add('subtitle-anime-inout-hide');
+                    // 播放下一个 subtitle
+                    index = (index + 1) % subtitles.length;
+                    subtitles[index].subtitle.classList.remove('subtitle-anime-inout-hide');
+                    subtitles[index].timeline.play();
+                }
+            });
+
+        tl.pause();
+
+        subtitles.push({
+            subtitle: subtitle,
+            timeline: tl,
+        });
+    });
+
+    // 初始化显示第一个 subtitle
+    subtitles[0].subtitle.classList.remove('subtitle-anime-inout-hide');
+    subtitles[0].timeline.play();
+</script>
